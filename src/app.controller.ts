@@ -1,5 +1,4 @@
 import {
-  Body,
   Controller,
   Get,
   Logger,
@@ -8,10 +7,10 @@ import {
   Query,
   Res,
 } from '@nestjs/common';
-import { AppService } from './app.service';
-import { ResponseDto } from './dtos/response.dto';
 import { Response } from 'express';
+import { AppService } from './app.service';
 import { SupportedPlatforms } from './data';
+import { ResponseDto } from './dtos/response.dto';
 
 @Controller()
 export class AppController {

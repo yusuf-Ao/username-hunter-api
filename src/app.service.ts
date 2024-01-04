@@ -1,17 +1,9 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import {
-  Observable,
-  catchError,
-  firstValueFrom,
-  lastValueFrom,
-  map,
-  of,
-} from 'rxjs';
-import { ResponseDto } from './dtos/response.dto';
-import { PlatformResponseDto } from './dtos/platform-response.dto';
+import { catchError, map, of } from 'rxjs';
 import { SupportedPlatforms } from './data';
+import { PlatformResponseDto } from './dtos/platform-response.dto';
 
 @Injectable()
 export class AppService {
