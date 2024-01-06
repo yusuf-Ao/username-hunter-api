@@ -134,6 +134,8 @@ export class AppService {
       result.verify = response.data.url;
       result.available = response.data.available;
     } catch (error) {
+      this.logger.error(error);
+      console.error(error);
       result.available = null;
       result.message = 'Unable to verify availability';
     }
