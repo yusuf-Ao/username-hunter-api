@@ -137,7 +137,8 @@ export class AppService {
       this.logger.error(error);
       console.error(error);
       result.available = null;
-      result.message = 'Unable to verify availability';
+      result.message = error.message;
+      result.verify = error;
     }
 
     return result;
