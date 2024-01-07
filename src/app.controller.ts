@@ -17,7 +17,7 @@ export class AppController {
   private readonly logger = new Logger(AppController.name);
   constructor(private readonly appService: AppService) {}
 
-  @Get('health-check')
+  @Get('ping')
   getHello(): string {
     return 'Server Available!..';
   }

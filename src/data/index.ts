@@ -1,12 +1,9 @@
 export const SupportedPlatforms = [
   'instagram',
-  'twitter',
   'github',
   'facebook',
-  'linkedin',
   'youtube',
-  'thread',
-  'telegram',
-  'spotify',
+  'threads',
+  'snapchat',
   'tiktok',
 ];

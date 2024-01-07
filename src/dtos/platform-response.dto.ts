@@ -1,6 +1,8 @@
 export class PlatformResponseDto {
   platform: string;
+  username: string;
   available: boolean;
-  verify: string;
+  verified: boolean;
+  url: string;
   message: string;
 }
