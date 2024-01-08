@@ -139,7 +139,9 @@ export class AppService {
     result.url = `https://www.instagram.com/${username}`;
     result.verified = false;
     try {
-      const response = await this.httpService.get(result.url).toPromise();
+      const response = await this.httpService
+        .get(result.url, { headers: { 'User-Agent': 'PostmanRuntime/7.36.0' } })
+        .toPromise();
       if (!response.data) {
         throw new Error('No data received from the URL.');
       }
