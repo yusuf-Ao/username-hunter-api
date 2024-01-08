@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import * as cheerio from 'cheerio';
 import { PlatformResponseDto } from './dtos/platform-response.dto';
 
@@ -133,15 +133,19 @@ export class AppService {
     platform: string,
     username: string,
   ): Promise<PlatformResponseDto> {
+    const customAxios: AxiosInstance = axios.create({
+      baseURL: 'https://www.instagram.com/',
+      headers: {
+        'User-Agent': 'PostmanRuntime/7.36.0',
+      },
+    });
     const result = new PlatformResponseDto();
     result.platform = platform;
     result.username = username;
     result.url = `https://www.instagram.com/${username}`;
     result.verified = false;
     try {
-      const response = await this.httpService
-        .get(result.url, { headers: { 'User-Agent': 'PostmanRuntime/7.36.0' } })
-        .toPromise();
+      const response = await customAxios.get(`${username}`);
       if (!response.data) {
         throw new Error('No data received from the URL.');
       }
