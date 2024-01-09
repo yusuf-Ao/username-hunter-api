@@ -3,6 +3,8 @@ import { Injectable, Logger } from '@nestjs/common';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import * as cheerio from 'cheerio';
 import { PlatformResponseDto } from './dtos/platform-response.dto';
+const { Builder, By } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 
 @Injectable()
 export class AppService {
@@ -142,7 +144,8 @@ export class AppService {
       const response = await this.httpService
         .get(result.url, {
           headers: {
-            'User-Agent': 'PostmanRuntime/7.36.0',
+            'User-Agent':
+              'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
             'Content-Type':
               'multipart/form-data; boundary=----WebKitFormBoundarytrWF11s1dYmjeLY2',
           },
@@ -167,6 +170,43 @@ export class AppService {
       : 'Username is already taken';
     return result;
   }
+
+  // async huntInstagram(platform, username) {
+  //   let driver = await new Builder()
+  //     .forBrowser('chrome')
+  //     .setChromeOptions(new chrome.Options().headless()) // Run in headless mode
+  //     .build();
+
+  //   try {
+  //     // Navigate to the Instagram profile
+  //     await driver.get(`https://www.instagram.com/${username}`);
+
+  //     // Get the page source and load with Cheerio
+  //     const pageSource = await driver.getPageSource();
+  //     const $ = cheerio.load(pageSource);
+
+  //     // Analyze the page source to determine if the profile is available
+  //     const htmlBodyText = $('body').text();
+  //     const isAvailable = !htmlBodyText.includes('"user_id"');
+  //     console.log({ htmlBodyText });
+
+  //     // Process the result
+  //     console.log({ username, isAvailable });
+  //     return {
+  //       platform: 'Instagram',
+  //       username: username,
+  //       url: `https://www.instagram.com/${username}`,
+  //       available: isAvailable,
+  //       verified: false,
+  //       message: null,
+  //     };
+  //   } catch (error) {
+  //     console.error(error);
+  //     throw error;
+  //   } finally {
+  //     await driver.quit();
+  //   }
+  // }
 
   async huntTwitter(
     platform: string,
