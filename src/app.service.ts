@@ -144,10 +144,13 @@ export class AppService {
       const response = await this.httpService
         .get(result.url, {
           headers: {
-            'User-Agent':
-              'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
-            'Content-Type':
-              'multipart/form-data; boundary=----WebKitFormBoundarytrWF11s1dYmjeLY2',
+            'User-Agent': 'PostmanRuntime/7.36.0',
+            Accept:
+              'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept-Encoding': 'gzip, deflate, br',
+            Connection: 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
           },
         })
         .toPromise();
