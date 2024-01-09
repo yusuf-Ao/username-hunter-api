@@ -154,7 +154,7 @@ export class AppService {
           },
         })
         .toPromise();
-      console.log({ response });
+      console.log(response?.request);
       if (!response.data) {
         throw new Error('No data received from the URL.');
       }
