@@ -154,7 +154,6 @@ export class AppService {
           },
         })
         .toPromise();
-      console.log(response?.request);
       if (!response.data) {
         throw new Error('No data received from the URL.');
       }
@@ -162,7 +161,7 @@ export class AppService {
       const $ = cheerio.load(html);
       const htmlBodyText = $('body').text();
       result.available = !htmlBodyText.includes('"user_id"');
-      result.verified = true;
+      result.verified = false;
     } catch (error) {
       this.logger.error(error);
       result.message = 'Unable to verify availability due to an error';
